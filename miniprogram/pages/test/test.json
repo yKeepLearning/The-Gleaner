@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "card": "/components/card/card",
+    "input-box": "/components/input-box/input-box"
+  }
+}

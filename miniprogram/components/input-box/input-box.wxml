@@ -1,0 +1,25 @@
+<!-- input-box.wxml -->
+<view class="input-box {{isFocused ? 'focused' : ''}}">
+  <!-- 输入框 -->
+  <view class="input-wrapper">
+    <input 
+      class="input-field"
+      placeholder="{{placeholder}}"
+      placeholder-class="placeholder-text"
+      value="{{inputValue}}"
+      bindinput="onInput"
+      bindfocus="onFocus"
+      bindblur="onBlur"
+      confirm-type="send"
+      bindconfirm="onSubmit"
+    />
+  </view>
+  
+  <!-- 提交按钮 -->
+  <view 
+    class="submit-btn {{disabled || !inputTrimmed ? 'disabled' : ''}}"
+    bind:tap="onSubmit"
+  >
+    <text class="btn-text">{{buttonText}}</text>
+  </view>
+</view>

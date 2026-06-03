@@ -1,0 +1,86 @@
+<!-- test.wxml -->
+<view class="container">
+  <view class="title">卡片组件测试</view>
+  
+  <!-- 主界面模式卡片 -->
+  <view class="section">
+    <text class="section-title">主界面模式 (main)</text>
+    <view class="card-container">
+      <card 
+        cardData="{{testCard1}}" 
+        mode="main" 
+        bind:tap="onCardTap"
+      />
+      <card 
+        cardData="{{testCard2}}" 
+        mode="main" 
+        bind:tap="onCardTap"
+      />
+      <card 
+        cardData="{{testCard3}}" 
+        mode="main" 
+        bind:tap="onCardTap"
+      />
+    </view>
+  </view>
+  
+  <!-- 收藏库模式卡片 -->
+  <view class="section">
+    <text class="section-title">收藏库模式 (collection)</text>
+    <view class="card-container">
+      <card 
+        cardData="{{testCard1}}" 
+        mode="collection" 
+        bind:tap="onCardTap"
+      />
+      <card 
+        cardData="{{testCard2}}" 
+        mode="collection" 
+        bind:tap="onCardTap"
+      />
+      <card 
+        cardData="{{testCard3}}" 
+        mode="collection" 
+        bind:tap="onCardTap"
+      />
+    </view>
+  </view>
+  
+  <!-- 测试结果 -->
+  <view wx:if="{{tapResult}}" class="result">
+    <text class="result-text">点击了卡片: {{tapResult}}</text>
+  </view>
+  
+  <!-- 输入框组件测试 -->
+  <view class="section">
+    <text class="section-title">输入框组件测试</text>
+    <view class="input-test-container">
+      <input-box 
+        placeholder="输入测试内容..."
+        buttonText="发送"
+        disabled="{{false}}"
+        bind:input="onInputBoxInput"
+        bind:focus="onInputBoxFocus"
+        bind:blur="onInputBoxBlur"
+        bind:submit="onInputBoxSubmit"
+      />
+    </view>
+    
+    <!-- 测试结果显示 -->
+    <view wx:if="{{inputResult}}" class="result">
+      <text class="result-text">输入框事件: {{inputResult}}</text>
+    </view>
+    
+    <!-- 禁用状态测试 -->
+    <view class="section">
+      <text class="section-title">禁用状态测试</text>
+      <view class="input-test-container">
+        <input-box 
+          placeholder="禁用状态..."
+          buttonText="禁用"
+          disabled="{{true}}"
+        />
+      </view>
+    </view>
+  </view>
+</view>

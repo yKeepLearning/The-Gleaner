@@ -1,0 +1,36 @@
+<!-- card.wxml -->
+<view 
+  class="card {{mode === 'main' ? 'card-main' : 'card-collection'}} {{mode === 'collection' ? 'card-type-' + cardData.type : ''}} {{cardData.status === 'unviewed' ? 'card-unviewed' : ''}} {{isAnimating ? 'animating' : ''}}"
+  bind:tap="onTapCard"
+>
+  <!-- 卡片内容区 -->
+  <view class="card-content">
+    <!-- 类型图标 -->
+    <view class="card-icon">
+      <text class="icon-text">{{typeIcon}}</text>
+    </view>
+    
+    <!-- 类型文字 -->
+    <view class="card-type">
+      <text class="type-text">{{typeText}}</text>
+    </view>
+    
+    <!-- 内容预览（收藏库模式显示） -->
+    <view wx:if="{{mode === 'collection'}}" class="card-preview">
+      <text class="preview-text">{{cardData.content}}</text>
+    </view>
+  </view>
+  
+  <!-- 底部信息 -->
+  <view class="card-footer">
+    <text class="date-text">{{cardData.date}}</text>
+    
+    <!-- 已收藏标记 -->
+    <view wx:if="{{cardData.status === 'claimed'}}" class="claimed-badge">
+      <text class="badge-text">已收藏</text>
+    </view>
+  </view>
+  
+  <!-- 发光边框效果（未查看状态） -->
+  <view wx:if="{{isAnimating}}" class="glow-border"></view>
+</view>

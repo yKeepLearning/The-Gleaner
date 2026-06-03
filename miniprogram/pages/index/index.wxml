@@ -1,0 +1,47 @@
+<!-- index.wxml -->
+<view class="page-index">
+  <!-- 导航栏 -->
+  <navigation-bar title="拾遗" back="{{false}}" color="white" background="#0a0a1a"></navigation-bar>
+  
+  <!-- 主内容区 -->
+  <view class="main-content">
+    <!-- 赃物卡片展示区 -->
+    <view class="card-area">
+      <view class="card-container">
+        <card 
+          cardData="{{todayCard}}" 
+          mode="main"
+          bind:tap="onTapCard"
+        ></card>
+      </view>
+      
+      <!-- 提示文字 -->
+      <view wx:if="{{todayCard.status === 'unviewed'}}" class="hint-text">
+        <text class="hint-text-content">今日赃物已到达</text>
+      </view>
+    </view>
+    
+    <!-- 交易区 -->
+    <view class="trade-area">
+      <!-- 交易请求文字 -->
+      <view class="trade-request">
+        <text class="trade-request-text font-mono">{{tradeRequest}}</text>
+        <text wx:if="{{!isTradeTextComplete}}" class="cursor">|</text>
+      </view>
+      
+      <!-- 输入框 -->
+      <view wx:if="{{!isTraded}}" class="input-area">
+        <input-box 
+          placeholder="用真话交换..."
+          buttonText="交换"
+          bind:submit="onSubmitTrade"
+        ></input-box>
+      </view>
+      
+      <!-- 已交易提示 -->
+      <view wx:else class="traded-hint">
+        <text class="traded-text">交易完成，赃物已收入收藏库</text>
+      </view>
+    </view>
+  </view>
+</view>
